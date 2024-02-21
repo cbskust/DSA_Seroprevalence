@@ -15,10 +15,10 @@ functions {
 
     real dydt[6];            // System of ODES
     
-      dydt[1] = - beta1 *y[1] * y[3] - beta1*1.20*y[1]*y[4]- alpha * y[1] ;    // dS/dt
-      dydt[2] = alpha * y[1] - beta2 *y[2] * y[3] - beta2* 1.20 *y[2]*y[4];      // dV/dt
+      dydt[1] = - beta1 *y[1] * y[3] - beta1*1.50*y[1]*y[4]- alpha * y[1] ;    // dS/dt
+      dydt[2] = alpha * y[1] - beta2 *y[2] * y[3] - beta2* 1.50 *y[2]*y[4];      // dV/dt
       dydt[3] = beta1 *y[1] * y[3] +beta2 *y[2] * y[3] -gamma * y[3];  //dI1/dt
-      dydt[4] = beta1 *1.20* y[1] * y[4] +beta2 *1.20*y[2] * y[4] -gamma * y[4];   // dI2/dt
+      dydt[4] = beta1 *1.50* y[1] * y[4] +beta2 *1.50*y[2] * y[4] -gamma * y[4];   // dI2/dt
       dydt[5] = gamma * (y[3]+y[4]) - delta*y[5];        // dR/dt
       dydt[6] = delta * y[5];                     // dT/dt
     
@@ -91,10 +91,10 @@ model {
   parms[7] = eps; 
   parms[8] = psi;
 
-  init[1] = 1 - rho - rho*0.01 - eps - psi; // Initial value of susceptible
+  init[1] = 1 - rho - rho*0.001 - eps - psi; // Initial value of susceptible
   init[2] = 0;                              // Initial value of vaccination
   init[3] = rho;                            // Initial value of infected. 
-  init[4] = rho*0.01;                       // Initial value of delta variant infected
+  init[4] = rho*0.001;                       // Initial value of delta variant infected
   init[5] = eps;                            // Initial value of recovered
   init[6] = psi;                            // Initial value of seroprevalent
   
@@ -110,7 +110,7 @@ model {
   target += gamma_lpdf(beta1| 40.97*1, 92.32*1);  
   target += gamma_lpdf(alpha| 0.0088*100000, 100000);   // for aggregated
   target += gamma_lpdf(beta2| 40.97*1, 92.32*1);  
-  target += gamma_lpdf(gamma| 41.80*1, 90.32*1);
+  target += gamma_lpdf(gamma| 21.80*1, 90.32*1);
   target += gamma_lpdf(delta| 24.29, 232.00);
   target += gamma_lpdf(rho| 0.00047*4648, 4648);
   target += gamma_lpdf(eps| 1.74, 1039.09);
