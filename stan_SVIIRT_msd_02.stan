@@ -112,7 +112,7 @@ model {
   target += gamma_lpdf(beta2| 40.97*1, 92.32*1);  //to prevent beta2 is less than beta1
   target += gamma_lpdf(gamma| 21.80*1, 90.32*1);
   target += gamma_lpdf(delta| 24.29, 232.00);
-  target += gamma_lpdf(rho| 0.00047*4648, 4648);
+  target += gamma_lpdf(rho| 0.0012*4648, 4648);
   target += gamma_lpdf(eps| 1.74, 1039.09);
   target += gamma_lpdf(psi| 112.50, 5035.15);
   target += beta_lpdf(spec| 21.7*1, 3.83*1); 
